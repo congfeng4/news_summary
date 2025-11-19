@@ -52,7 +52,6 @@ class NewsSummaryPipeline:
     def fetch_news_data(self, topic: str) -> List[Dict]:
         """
         获取新闻数据
-        在实际应用中，这里会调用AskNews API
         这里返回模拟数据
         """
         # 模拟从多个来源获取的新闻数据
@@ -81,7 +80,7 @@ class NewsSummaryPipeline:
 
     def extract_entities_and_summary(self, news_list: List[Dict]) -> Dict[str, Any]:
         """
-        提取实体和生成摘要 - 带文件保存调试版本
+        提取实体和生成摘要
         """
         prompt = PromptTemplate(
             input_variables=["key_event", "news_list"],
@@ -151,5 +150,5 @@ class NewsSummaryPipeline:
 if __name__ == "__main__":
     # 加载环境变量
     load_dotenv()
-    pipeline = NewsSummaryPipeline(topic="OpenAI")
-    pipeline.run_pipeline("demo_output.html")
+    pipeline = NewsSummaryPipeline(topic="league of legends")
+    pipeline.run_pipeline("test1.html")
